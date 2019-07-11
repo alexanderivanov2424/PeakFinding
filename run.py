@@ -2,11 +2,12 @@
 import numpy as np
 import glob
 import os
+import matplotlib.pyplot as plt
 
 # Personal package import
 from BlockData import BlockData
 from bumpFindFit import bumpFindFit
-from reportFn import genPeakReportCSV
+from reportFn import genPeakReportCSV,genOptParamCSV
 
 from saveDimRedPack import save_1Dcsv
 
@@ -14,7 +15,7 @@ peakShape = 'Voigt'
 numCurves = 2
 fit_order = 2
 
-savePath = '/home/sasha/Desktop/TiNiSn_500C_PeakData_0.01/'
+savePath = '/home/sasha/Desktop/peakTest/'
 
 csvFilepath = '/home/sasha/Desktop/TiNiSn_500C-20190604T152446Z-001/TiNiSn_500C/'
 
@@ -29,7 +30,10 @@ for f in csvFiles:
     IntAve = data[:,1]
     dataArray = np.array([Qlist, IntAve])
 
-    dataIn = BlockData(dataArray, fit_order, .01, peakShape) # .5
+    #plt.plot(Qlist,IntAve)
+    #plt.show()
+
+    dataIn = BlockData(dataArray, fit_order, .5, peakShape) # .5
     #### has various functions
     ##############################################################
 
@@ -50,4 +54,5 @@ for f in csvFiles:
     # Generate residual plot using stored optParams
     pctErr = dataIn.genResidPlot()
 
-    genPeakReportCSV(savePath, fileRoot, litFWHM, pctErr)
+    genOptParamCSV(savePath, fileRoot, paramDict)
+    #genPeakReportCSV(savePath, fileRoot, litFWHM, pctErr)
