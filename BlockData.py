@@ -216,9 +216,6 @@ class BlockData:
 
             # Iterate if desired, to implement later
             break
-
-        cp, _ = find_peaks(np.amax(self.subData[1]) - self.subData[1])
-
         numCP = len(cp)
         numBlocks = numCP + 1
 
