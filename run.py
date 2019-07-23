@@ -15,7 +15,7 @@ peakShape = 'Voigt'
 numCurves = 2
 fit_order = 2
 
-savePath = '/home/sasha/Desktop/peakTest/'
+savePath = '/home/sasha/Desktop/peakParamsOnMinBlocks/'
 
 csvFilepath = '/home/sasha/Desktop/TiNiSn_500C-20190604T152446Z-001/TiNiSn_500C/'
 
@@ -55,4 +55,4 @@ for f in csvFiles:
     pctErr = dataIn.genResidPlot()
 
     genOptParamCSV(savePath, fileRoot, paramDict)
-    #genPeakReportCSV(savePath, fileRoot, litFWHM, pctErr)
+    genPeakReportCSV(savePath, fileRoot, litFWHM, pctErr)

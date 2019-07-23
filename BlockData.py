@@ -1,3 +1,7 @@
+#additional:
+from scipy.signal import find_peaks
+
+
 from scipy.optimize import curve_fit, basinhopping
 from scipy import integrate, signal
 from scipy.special import wofz
@@ -213,6 +217,7 @@ class BlockData:
             # Iterate if desired, to implement later
             break
 
+        cp, _ = find_peaks(np.amax(self.subData[1]) - self.subData[1])
 
         numCP = len(cp)
         numBlocks = numCP + 1
@@ -260,7 +265,6 @@ class BlockData:
         self.best         = best
         self.last         = last
         self.nn           = nnVec
-
         self.cptUse       = cptUse
         return None # end blockFinder method
 
